@@ -8,10 +8,20 @@ nav {
     width: 100%;
     padding: 20px 40px;
     z-index: 100;
-    background: rgba(5, 5, 5, 0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+    /* 1. Semi-transparent black */
+    background: rgba(5, 5, 5, 0.7);
+
+    /* 2. The Liquid Blur Effect */
+    /* blur: makes it fuzzy */
+    /* saturate: makes colors popping behind it look 'wet' or vibrant */
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    backdrop-filter: blur(15px) saturate(180%);
+
+    /* 3. A subtle glass edge */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
+
 .back-link {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.7);
@@ -100,19 +110,21 @@ nav {
 
 .year-heading {
     position: sticky;
-    top: 65px;
-    background: rgba(5, 5, 5, 0.85);
-    backdrop-filter: blur(12px);
+    top: 63px;
     z-index: 50;
-    width: 100%;
-    padding: 15px 15px;
+    width: 98%;
+    padding: 15px 20px;
     margin: 0;
     border-radius: 16px;
     font-size: 2rem;
     font-weight: 800;
-    color: white;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(5, 5, 5, 0.4);
+    -webkit-backdrop-filter: blur(12px) saturate(200%);
+    backdrop-filter: blur(12px) saturate(200%);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 30px #050505;
+    transition: all 0.3s ease;
 }
 
 .year-heading:first-child {
