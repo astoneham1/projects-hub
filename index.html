@@ -613,6 +613,18 @@
       var dark = document.documentElement.classList.toggle('dark');
       try { localStorage.theme = dark ? 'dark' : 'light'; } catch (e) { }
     });
+
+    // Keep the project counts in sync with the cards on the page
+    (function () {
+      var label = function (n) { return n + (n === 1 ? ' project' : ' projects'); };
+
+      document.querySelectorAll('.year').forEach(function (year) {
+        var n = year.querySelectorAll('.card').length;
+        year.querySelector('.count').textContent = (n < 10 ? '0' : '') + label(n);
+      });
+
+      document.querySelector('.total').textContent = label(document.querySelectorAll('.card').length);
+    })();
   </script>
 </body>
 
