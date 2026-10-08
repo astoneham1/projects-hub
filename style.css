@@ -194,7 +194,7 @@ svg { display: block; flex-shrink: 0; }
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     overflow: hidden;
-    animation: slideInUp 0.6s ease-out both;
+    animation: slideInUp 0.6s ease-out backwards;
     animation-delay: calc(var(--i, 0) * 70ms);
     transition: background 0.3s ease-out, border-color 0.3s ease-out, box-shadow 0.3s ease-out, transform 0.3s ease-out, opacity 0.3s;
 }
