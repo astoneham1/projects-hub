@@ -1,310 +1,590 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Hub</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Alex Stoneham</title>
+  <meta name="description"
+    content="A collection of the projects I've built: web apps, games, API clients and Java experiments.">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Projects | Alex Stoneham">
+  <meta property="og:description"
+    content="A collection of the projects I've built: web apps, games, API clients and Java experiments.">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://alexstoneham.co.uk/ax_icons/favicon-32x32.png?v=2">
+  <link rel="apple-touch-icon" href="https://alexstoneham.co.uk/ax_icons/apple-touch-icon.png?v=2">
+  <script>
+    try {
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    } catch (e) { }
+  </script>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<nav>
-    <a href="https://alexstoneham.co.uk" class="back-link">
-        &larr; Return to Portfolio
-    </a>
-</nav>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-github" viewBox="0 0 24 24">
+      <path fill="currentColor"
+        d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z" />
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        d="M7 17 17 7M8 7h9v9" />
+    </symbol>
+    <symbol id="i-back" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        d="M19 12H5m6-6-6 6 6 6" />
+    </symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="4" />
+        <path
+          d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+      </g>
+    </symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+    </symbol>
+  </svg>
 
-<main class="gallery">
-    <h2 class="year-heading">2026</h2>
+  <div class="bg-grid" aria-hidden="true"></div>
 
-    <div class="card">
-        <a href="https://github.com/astoneham1/scottish-prem-app" class="code-btn" target="_blank" title="View Source Code">
-            <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://www.skitescore.com/" class="card-link" target="_blank">
-            <div class="card-bg" style="background-image: url('assets/spfl.png');"></div>
-            <div class="overlay"></div>
-            <div class="content">
-                <span class="category">Web Development + API</span>
-                <h2>SkiteScore - Scottish Premiership Tracker</h2>
-            </div>
-        </a>
-    </div>
+  <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle colour theme">
+    <svg class="sun" aria-hidden="true">
+      <use href="#i-sun" />
+    </svg>
+    <svg class="moon" aria-hidden="true">
+      <use href="#i-moon" />
+    </svg>
+  </button>
 
-    <div class="card">
-        <a href="https://github.com/astoneham1/breakle" class="code-btn" target="_blank" title="View Source Code">
-            <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://breakle.alexstoneham.co.uk/" class="card-link" target="_blank">
-            <div class="card-bg" style="background-image: url('https://i.gyazo.com/0b0617702f6e9bb1c19d0888ff43f5e8.png');"></div>
-            <div class="overlay"></div>
-            <div class="content">
-                <span class="category">Web Development + Games</span>
-                <h2>Breakle</h2>
-            </div>
-        </a>
-    </div>
+  <main class="page">
+    <header class="hero">
+      <a class="back-link" href="https://alexstoneham.co.uk">
+        <svg aria-hidden="true">
+          <use href="#i-back" />
+        </svg>
+        Back to portfolio
+      </a>
+      <h1>Projects</h1>
+      <p class="lede">Everything I've built, from web apps and games to API clients and Java experiments. <span
+          class="total">20 projects</span> and counting.</p>
+    </header>
 
-    <div class="card">
-        <a href="https://github.com/astoneham1/order-simulator" class="code-btn" target="_blank" title="View Source Code">
-            <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://ordersim.alexstoneham.co.uk" class="card-link" target="_blank">
-            <div class="card-bg" style="background-image: url('https://i.gyazo.com/f4286de2243d9a81306e45593603a053.png');"></div>
-            <div class="overlay"></div>
-            <div class="content">
-                <span class="category">Web Development + Games</span>
-                <h2>Order Simulator</h2>
-            </div>
-        </a>
-    </div>
+    <section class="year">
+      <header class="year-head">
+        <h2>2026</h2>
+        <span class="rule"></span>
+        <span class="count">05 projects</span>
+      </header>
+      <div class="grid">
+        <article class="card" style="--i:0">
+          <div class="thumb" data-initial="S">
+            <img src="assets/spfl.png" alt="" loading="lazy" decoding="async" onerror="this.hidden=true">
+          </div>
+          <div class="body">
+            <h3>
+              <a class="main-link" href="https://www.skitescore.com/" target="_blank"
+                rel="noopener noreferrer">SkiteScore - Scottish Premiership Tracker<svg class="arrow"
+                  aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg></a>
+            </h3>
+            <ul class="tags">
+              <li>Web Development</li>
+              <li>API</li>
+            </ul>
+          </div>
+          <a class="code-btn" href="https://github.com/astoneham1/scottish-prem-app" target="_blank"
+            rel="noopener noreferrer" title="View source code"
+            aria-label="View source code for SkiteScore - Scottish Premiership Tracker"><svg aria-hidden="true">
+              <use href="#i-github" />
+            </svg></a>
+        </article>
+        <article class="card" style="--i:1">
+          <div class="thumb" data-initial="B">
+            <img src="https://i.gyazo.com/0b0617702f6e9bb1c19d0888ff43f5e8.png" alt="" loading="lazy" decoding="async"
+              onerror="this.hidden=true">
+          </div>
+          <div class="body">
+            <h3>
+              <a class="main-link" href="https://breakle.alexstoneham.co.uk/" target="_blank"
+                rel="noopener noreferrer">Breakle<svg class="arrow" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg></a>
+            </h3>
+            <ul class="tags">
+              <li>Web Development</li>
+              <li>Games</li>
+            </ul>
+          </div>
+          <a class="code-btn" href="https://github.com/astoneham1/breakle" target="_blank" rel="noopener noreferrer"
+            title="View source code" aria-label="View source code for Breakle"><svg aria-hidden="true">
+              <use href="#i-github" />
+            </svg></a>
+        </article>
+        <article class="card" style="--i:2">
+          <div class="thumb" data-initial="O">
+            <img src="https://i.gyazo.com/f4286de2243d9a81306e45593603a053.png" alt="" loading="lazy" decoding="async"
+              onerror="this.hidden=true">
+          </div>
+          <div class="body">
+            <h3>
+              <a class="main-link" href="https://ordersim.alexstoneham.co.uk" target="_blank"
+                rel="noopener noreferrer">Order Simulator<svg class="arrow" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg></a>
+            </h3>
+            <ul class="tags">
+              <li>Web Development</li>
+              <li>Games</li>
+            </ul>
+          </div>
+          <a class="code-btn" href="https://github.com/astoneham1/order-simulator" target="_blank"
+            rel="noopener noreferrer" title="View source code" aria-label="View source code for Order Simulator"><svg
+              aria-hidden="true">
+              <use href="#i-github" />
+            </svg></a>
+        </article>
+        <article class="card" style="--i:3">
+          <div class="thumb" data-initial="B">
+            <img src="https://i.gyazo.com/f44b97ee61c76634c3194e3fbc5adc89.png" alt="" loading="lazy" decoding="async"
+              onerror="this.hidden=true">
+          </div>
+          <div class="body">
+            <h3>
+              <a class="main-link" href="https://movies.alexstoneham.co.uk" target="_blank"
+                rel="noopener noreferrer">Bad Movie Plots<svg class="arrow" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg></a>
+            </h3>
+            <ul class="tags">
+              <li>Web Development</li>
+              <li>Games</li>
+            </ul>
+          </div>
+          <a class="code-btn" href="https://github.com/astoneham1/movie-plots" target="_blank" rel="noopener noreferrer"
+            title="View source code" aria-label="View source code for Bad Movie Plots"><svg aria-hidden="true">
+              <use href="#i-github" />
+            </svg></a>
+        </article>
+        <article class="card" style="--i:4">
+          <div class="thumb" data-initial="C">
+            <img src="https://i.gyazo.com/81cb6c66cadbd0dc3c266cc7640700a3.png" alt="" loading="lazy" decoding="async"
+              onerror="this.hidden=true">
+          </div>
+          <div class="body">
+            <h3>
+              <a class="main-link" href="https://convert.alexstoneham.co.uk" target="_blank"
+                rel="noopener noreferrer">Currency Converter<svg class="arrow" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg></a>
+            </h3>
+            <ul class="tags">
+              <li>Web Development</li>
+              <li>API</li>
+            </ul>
+          </div>
+          <a class="code-btn" href="https://github.com/astoneham1/currency-converter" target="_blank"
+            rel="noopener noreferrer" title="View source code" aria-label="View source code for Currency Converter"><svg
+              aria-hidden="true">
+              <use href="#i-github" />
+            </svg></a>
+        </article>
+      </div>
+    </section>
 
-    <div class="card">
-        <a href="https://github.com/astoneham1/movie-plots" class="code-btn" target="_blank" title="View Source Code">
-            <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://movies.alexstoneham.co.uk" class="card-link" target="_blank">
-            <div class="card-bg" style="background-image: url('https://i.gyazo.com/f44b97ee61c76634c3194e3fbc5adc89.png');"></div>
-            <div class="overlay"></div>
-            <div class="content">
-                <span class="category">Web Development + Games</span>
-                <h2>Bad Movie Plots</h2>
-            </div>
-        </a>
-    </div>
-    
-    <div class="card">
-        <a href="https://github.com/astoneham1/currency-converter" class="code-btn" target="_blank" title="View Source Code">
-            <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://convert.alexstoneham.co.uk" class="card-link" target="_blank">
-            <div class="card-bg" style="background-image: url('https://i.gyazo.com/81cb6c66cadbd0dc3c266cc7640700a3.png');"></div>
-            <div class="overlay"></div>
-            <div class="content">
-                <span class="category">Web Development + API</span>
-                <h2>Currency Converter</h2>
-            </div>
-        </a>
-    </div>
+    <section class="year">
+      <header class="year-head">
+        <h2>2025</h2>
+        <span class="rule"></span>
+        <span class="count">13 projects</span>
+      </header>
+      <div class="grid">
+        <article class="card" style="--i:0">
+          <div class="thumb" data-initial="T">
+            <img src="https://i.gyazo.com/476c606789f51b0ff8f4ca67fbf67bdb.png" alt="" loading="lazy" decoding="async"
+              onerror="this.hidden=true">
+          </div>
+          <div class="body">
+            <h3>
+              <a class="main-link" href="https://github.com/astoneham1/ticket-chief" target="_blank"
+                rel="noopener noreferrer">Ticket Chief<svg class="arrow" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg></a>
+            </h3>
+            <ul class="tags">
+              <li>Java</li>
+              <li>Socket</li>
+              <li>API</li>
+              <li>Web Development</li>
+            </ul>
+          </div>
+          <a class="code-btn" href="https://github.com/astoneham1/ticket-chief" target="_blank"
+            rel="noopener noreferrer" title="View source code" aria-label="View source code for Ticket Chief"><svg
+              aria-hidden="true">
+              <use href="#i-github" />
+            </svg></a>
+        </article>
+        <article class="card" style="--i:1">
+          <div class="thumb" data-initial="S">
+            <img src="https://i.gyazo.com/55d0d8ecf63400726a3e97d0ab9769c0.png" alt="" loading="lazy" decoding="async"
+              onerror="this.hidden=true">
+          </div>
+          <div class="body">
+            <h3>
+              <a class="main-link" href="https://github.com/astoneham1/sorting-complexity" target="_blank"
+                rel="noopener noreferrer">Sorting Complexity<svg class="arrow" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg></a>
+            </h3>
+            <ul class="tags">
+              <li>Java</li>
+              <li>Python</li>
+            </ul>
+          </div>
+          <a class="code-btn" href="https://github.com/astoneham1/sorting-complexity" target="_blank"
+            rel="noopener noreferrer" title="View source code" aria-label="View source code for Sorting Complexity"><svg
+              aria-hidden="true">
+              <use href="#i-github" />
+            </svg></a>
+        </article>
+        <article class="card" style="--i:2">
+          <div class="thumb" data-initial="T">
+            <img src="https://i.gyazo.com/94c851c4dc377fbdaba2413a33582372.png" alt="" loading="lazy" decoding="async"
+              onerror="this.hidden=true">
+          </div>
+          <div class="body">
+            <h3>
+              <a class="main-link" href="https://ppp.alexstoneham.co.uk" target="_blank" rel="noopener noreferrer">The
+                Pixel Preservation Project<svg class="arrow" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg></a>
+            </h3>
+            <ul class="tags">
+              <li>Web Development</li>
+            </ul>
+          </div>
+          <a class="code-btn" href="https://github.com/astoneham1/pixel-preservation-project" target="_blank"
+            rel="noopener noreferrer" title="View source code"
+            aria-label="View source code for The Pixel Preservation Project"><svg aria-hidden="true">
+              <use href="#i-github" />
+            </svg></a>
+        </article>
+        <article class="card" style="--i:3">
+          <div class="thumb" data-initial="S">
+            <img src="https://i.gyazo.com/c1c463dc181746c326a77568e90cef6b.png" alt="" loading="lazy" decoding="async"
+              onerror="this.hidden=true">
+          </div>
+          <div class="body">
+            <h3>
+              <a class="main-link" href="https://github.com/astoneham1/stacks-queues" target="_blank"
+                rel="noopener noreferrer">Stacks and Queues<svg class="arrow" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg></a>
+            </h3>
+            <ul class="tags">
+              <li>Java</li>
+            </ul>
+          </div>
+          <a class="code-btn" href="https://github.com/astoneham1/stacks-queues" target="_blank"
+            rel="noopener noreferrer" title="View source code" aria-label="View source code for Stacks and Queues"><svg
+              aria-hidden="true">
+              <use href="#i-github" />
+            </svg></a>
+        </article>
+        <article class="card" style="--i:4">
+          <div class="thumb" data-initial="S">
+            <img src="https://i.gyazo.com/f81d32c3f8deeebc801dd95776d6896f.png" alt="" loading="lazy" decoding="async"
+              onerror="this.hidden=true">
+          </div>
+          <div class="body">
+            <h3>
+              <a class="main-link" href="https://github.com/astoneham1/simple-tcp-app" target="_blank"
+                rel="noopener noreferrer">Simple TCP App<svg class="arrow" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg></a>
+            </h3>
+            <ul class="tags">
+              <li>Java</li>
+              <li>Socket</li>
+            </ul>
+          </div>
+          <a class="code-btn" href="https://github.com/astoneham1/simple-tcp-app" target="_blank"
+            rel="noopener noreferrer" title="View source code" aria-label="View source code for Simple TCP App"><svg
+              aria-hidden="true">
+              <use href="#i-github" />
+            </svg></a>
+        </article>
+        <article class="card" style="--i:5">
+          <div class="thumb" data-initial="F">
+            <img src="https://i.gyazo.com/189ea99e4bad620dc9806a67eb9ff6ec.png" alt="" loading="lazy" decoding="async"
+              onerror="this.hidden=true">
+          </div>
+          <div class="body">
+            <h3>
+              <a class="main-link" href="https://github.com/astoneham1/fsa-tdd" target="_blank"
+                rel="noopener noreferrer">FSA Implementation through TDD<svg class="arrow" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg></a>
+            </h3>
+            <ul class="tags">
+              <li>Java</li>
+            </ul>
+          </div>
+          <a class="code-btn" href="https://github.com/astoneham1/fsa-tdd" target="_blank" rel="noopener noreferrer"
+            title="View source code" aria-label="View source code for FSA Implementation through TDD"><svg
+              aria-hidden="true">
+              <use href="#i-github" />
+            </svg></a>
+        </article>
+        <article class="card" style="--i:6">
+          <div class="thumb" data-initial="M">
+            <img src="https://i.gyazo.com/e1815f61511b477c1182a4fa3cdf58d3.png" alt="" loading="lazy" decoding="async"
+              onerror="this.hidden=true">
+          </div>
+          <div class="body">
+            <h3>
+              <a class="main-link" href="https://github.com/astoneham1/watchmode-api-client" target="_blank"
+                rel="noopener noreferrer">Movie Stats<svg class="arrow" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg></a>
+            </h3>
+            <ul class="tags">
+              <li>Java</li>
+              <li>Swing</li>
+              <li>API</li>
+            </ul>
+          </div>
+          <a class="code-btn" href="https://github.com/astoneham1/watchmode-api-client" target="_blank"
+            rel="noopener noreferrer" title="View source code" aria-label="View source code for Movie Stats"><svg
+              aria-hidden="true">
+              <use href="#i-github" />
+            </svg></a>
+        </article>
+        <article class="card" style="--i:7">
+          <div class="thumb" data-initial="A">
+            <img src="https://i.gyazo.com/ea6faada7dc9e10bd68e8db2a11f0e8c.png" alt="" loading="lazy" decoding="async"
+              onerror="this.hidden=true">
+          </div>
+          <div class="body">
+            <h3>
+              <a class="main-link" href="https://github.com/astoneham1/animal-api-client/releases/latest"
+                target="_blank" rel="noopener noreferrer">Animal Photos<svg class="arrow" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg></a>
+            </h3>
+            <ul class="tags">
+              <li>Java</li>
+              <li>Swing</li>
+              <li>API</li>
+            </ul>
+          </div>
+          <a class="code-btn" href="https://github.com/astoneham1/animal-api-client" target="_blank"
+            rel="noopener noreferrer" title="View source code" aria-label="View source code for Animal Photos"><svg
+              aria-hidden="true">
+              <use href="#i-github" />
+            </svg></a>
+        </article>
+        <article class="card" style="--i:8">
+          <div class="thumb" data-initial="C">
+            <img src="https://i.gyazo.com/9177029ce3a2866bd31a5b1cdc2bc8cf.png" alt="" loading="lazy" decoding="async"
+              onerror="this.hidden=true">
+          </div>
+          <div class="body">
+            <h3>
+              <a class="main-link" href="https://github.com/astoneham1/countries-api-client/releases/latest"
+                target="_blank" rel="noopener noreferrer">Country Stats<svg class="arrow" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg></a>
+            </h3>
+            <ul class="tags">
+              <li>Java</li>
+              <li>Swing</li>
+              <li>API</li>
+            </ul>
+          </div>
+          <a class="code-btn" href="https://github.com/astoneham1/countries-api-client" target="_blank"
+            rel="noopener noreferrer" title="View source code" aria-label="View source code for Country Stats"><svg
+              aria-hidden="true">
+              <use href="#i-github" />
+            </svg></a>
+        </article>
+        <article class="card" style="--i:9">
+          <div class="thumb" data-initial="J">
+            <img src="https://i.gyazo.com/e65f01164f43350ad2c48939162d07f1.png" alt="" loading="lazy" decoding="async"
+              onerror="this.hidden=true">
+          </div>
+          <div class="body">
+            <h3>
+              <a class="main-link" href="https://github.com/astoneham1/joke-api-client" target="_blank"
+                rel="noopener noreferrer">Joke Generator<svg class="arrow" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg></a>
+            </h3>
+            <ul class="tags">
+              <li>Java</li>
+              <li>Swing</li>
+              <li>API</li>
+            </ul>
+          </div>
+          <a class="code-btn" href="https://github.com/astoneham1/joke-api-client" target="_blank"
+            rel="noopener noreferrer" title="View source code" aria-label="View source code for Joke Generator"><svg
+              aria-hidden="true">
+              <use href="#i-github" />
+            </svg></a>
+        </article>
+        <article class="card" style="--i:10">
+          <div class="thumb" data-initial="N">
+            <img src="https://i.gyazo.com/d54015fbb310d2de1d2b37168af69757.png" alt="" loading="lazy" decoding="async"
+              onerror="this.hidden=true">
+          </div>
+          <div class="body">
+            <h3>
+              <a class="main-link" href="https://github.com/astoneham1/nonograms" target="_blank"
+                rel="noopener noreferrer">Nonograms<svg class="arrow" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg></a>
+            </h3>
+            <ul class="tags">
+              <li>Java</li>
+              <li>Swing</li>
+              <li>Games</li>
+            </ul>
+          </div>
+          <a class="code-btn" href="https://github.com/astoneham1/nonograms" target="_blank" rel="noopener noreferrer"
+            title="View source code" aria-label="View source code for Nonograms"><svg aria-hidden="true">
+              <use href="#i-github" />
+            </svg></a>
+        </article>
+        <article class="card" style="--i:11">
+          <div class="thumb" data-initial="B">
+            <img src="https://i.gyazo.com/27f51cf1647706cdacee48f686376626.png" alt="" loading="lazy" decoding="async"
+              onerror="this.hidden=true">
+          </div>
+          <div class="body">
+            <h3>
+              <a class="main-link" href="https://github.com/astoneham1/brickbreak" target="_blank"
+                rel="noopener noreferrer">Brickbreak<svg class="arrow" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg></a>
+            </h3>
+            <ul class="tags">
+              <li>Java</li>
+              <li>Processing</li>
+              <li>Games</li>
+            </ul>
+          </div>
+          <a class="code-btn" href="https://github.com/astoneham1/brickbreak" target="_blank" rel="noopener noreferrer"
+            title="View source code" aria-label="View source code for Brickbreak"><svg aria-hidden="true">
+              <use href="#i-github" />
+            </svg></a>
+        </article>
+        <article class="card" style="--i:12">
+          <div class="thumb" data-initial="J">
+            <img src="https://i.gyazo.com/5a565f435110a49c836f9deaedc151d8.png" alt="" loading="lazy" decoding="async"
+              onerror="this.hidden=true">
+          </div>
+          <div class="body">
+            <h3>
+              <a class="main-link" href="https://github.com/astoneham1/jdbc" target="_blank"
+                rel="noopener noreferrer">JDBC<svg class="arrow" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg></a>
+            </h3>
+            <ul class="tags">
+              <li>Java</li>
+              <li>SQLite</li>
+            </ul>
+          </div>
+          <a class="code-btn" href="https://github.com/astoneham1/jdbc" target="_blank" rel="noopener noreferrer"
+            title="View source code" aria-label="View source code for JDBC"><svg aria-hidden="true">
+              <use href="#i-github" />
+            </svg></a>
+        </article>
+      </div>
+    </section>
 
-    <h2 class="year-heading">2025</h2>
+    <section class="year">
+      <header class="year-head">
+        <h2>2024</h2>
+        <span class="rule"></span>
+        <span class="count">01 project</span>
+      </header>
+      <div class="grid">
+        <article class="card" style="--i:0">
+          <div class="thumb" data-initial="E">
+            <img src="assets/livefut.png" alt="" loading="lazy" decoding="async" onerror="this.hidden=true">
+          </div>
+          <div class="body">
+            <h3>
+              <a class="main-link" href="https://github.com/astoneham1/higherlower/releases/latest" target="_blank"
+                rel="noopener noreferrer">EAFC Higher or Lower<svg class="arrow" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg></a>
+            </h3>
+            <ul class="tags">
+              <li>Livecode</li>
+              <li>SQLite</li>
+            </ul>
+          </div>
+          <a class="code-btn" href="https://github.com/astoneham1/higherlower" target="_blank" rel="noopener noreferrer"
+            title="View source code" aria-label="View source code for EAFC Higher or Lower"><svg aria-hidden="true">
+              <use href="#i-github" />
+            </svg></a>
+        </article>
+      </div>
+    </section>
 
-    <div class="card">
-        <a href="https://github.com/astoneham1/ticket-chief" class="code-btn" target="_blank" title="View Source Code">
-            <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://github.com/astoneham1/ticket-chief" class="card-link" target="_blank">
-            <div class="card-bg" style="background-image: url('https://i.gyazo.com/476c606789f51b0ff8f4ca67fbf67bdb.png');"></div>
-            <div class="overlay"></div>
-            <div class="content">
-                <span class="category">Java + Socket + API + Web Development</span>
-                <h2>Ticket Chief</h2>
-            </div>
-        </a>
-    </div>
+    <section class="year">
+      <header class="year-head">
+        <h2>Before 2024</h2>
+        <span class="rule"></span>
+        <span class="count">01 project</span>
+      </header>
+      <div class="grid">
+        <article class="card" style="--i:0">
+          <div class="thumb" data-initial="S">
+            <img src="assets/clips.png" alt="" loading="lazy" decoding="async" onerror="this.hidden=true">
+          </div>
+          <div class="body">
+            <h3>
+              <a class="main-link" href="https://clips.alexstoneham.co.uk/" target="_blank"
+                rel="noopener noreferrer">Siege Clip Hub<svg class="arrow" aria-hidden="true">
+                  <use href="#i-arrow" />
+                </svg></a>
+            </h3>
+            <ul class="tags">
+              <li>Web Development</li>
+            </ul>
+          </div>
+          <a class="code-btn" href="https://github.com/astoneham1/clips" target="_blank" rel="noopener noreferrer"
+            title="View source code" aria-label="View source code for Siege Clip Hub"><svg aria-hidden="true">
+              <use href="#i-github" />
+            </svg></a>
+        </article>
+      </div>
+    </section>
 
-    <div class="card">
-        <a href="https://github.com/astoneham1/sorting-complexity" class="code-btn" target="_blank" title="View Source Code">
-            <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://github.com/astoneham1/sorting-complexity" class="card-link" target="_blank">
-            <div class="card-bg" style="background-image: url('https://i.gyazo.com/55d0d8ecf63400726a3e97d0ab9769c0.png');"></div>
-            <div class="overlay"></div>
-            <div class="content">
-                <span class="category">Java + Python</span>
-                <h2>Sorting Complexity</h2>
-            </div>
-        </a>
-    </div>
+    <footer class="footer">
+      <a href="https://alexstoneham.co.uk">alexstoneham.co.uk</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://github.com/astoneham1" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </footer>
+  </main>
 
-    <div class="card">
-        <a href="https://github.com/astoneham1/pixel-preservation-project" class="code-btn" target="_blank" title="View Source Code">
-            <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://ppp.alexstoneham.co.uk" class="card-link" target="_blank">
-            <div class="card-bg" style="background-image: url('https://i.gyazo.com/94c851c4dc377fbdaba2413a33582372.png');"></div>
-            <div class="overlay"></div>
-            <div class="content">
-                <span class="category">Web Development</span>
-                <h2>The Pixel Preservation Project</h2>
-            </div>
-        </a>
-    </div>
-
-    <div class="card">
-        <a href="https://github.com/astoneham1/stacks-queues" class="code-btn" target="_blank" title="View Source Code">
-            <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://github.com/astoneham1/stacks-queues" class="card-link" target="_blank">
-            <div class="card-bg" style="background-image: url('https://i.gyazo.com/c1c463dc181746c326a77568e90cef6b.png');"></div>
-            <div class="overlay"></div>
-            <div class="content">
-                <span class="category">Java</span>
-                <h2>Stacks and Queues</h2>
-            </div>
-        </a>
-    </div>
-
-    <div class="card">
-        <a href="https://github.com/astoneham1/simple-tcp-app" class="code-btn" target="_blank" title="View Source Code">
-            <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://github.com/astoneham1/simple-tcp-app" class="card-link" target="_blank">
-            <div class="card-bg" style="background-image: url('https://i.gyazo.com/f81d32c3f8deeebc801dd95776d6896f.png');"></div>
-            <div class="overlay"></div>
-            <div class="content">
-                <span class="category">Java + Socket</span>
-                <h2>Simple TCP App</h2>
-            </div>
-        </a>
-    </div>
-
-    <div class="card">
-        <a href="https://github.com/astoneham1/fsa-tdd" class="code-btn" target="_blank" title="View Source Code">
-            <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://github.com/astoneham1/fsa-tdd" class="card-link" target="_blank">
-            <div class="card-bg" style="background-image: url('https://i.gyazo.com/189ea99e4bad620dc9806a67eb9ff6ec.png');"></div>
-            <div class="overlay"></div>
-            <div class="content">
-                <span class="category">Java</span>
-                <h2>FSA Implementation through TDD</h2>
-            </div>
-        </a>
-    </div>
-
-    <div class="card">
-        <a href="https://github.com/astoneham1/watchmode-api-client" class="code-btn" target="_blank" title="View Source Code">
-            <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://github.com/astoneham1/watchmode-api-client" class="card-link" target="_blank">
-            <div class="card-bg" style="background-image: url('https://i.gyazo.com/e1815f61511b477c1182a4fa3cdf58d3.png');"></div>
-            <div class="overlay"></div>
-            <div class="content">
-                <span class="category">Java + Swing + API</span>
-                <h2>Movie Stats</h2>
-            </div>
-        </a>
-    </div>
-
-    <div class="card">
-        <a href="https://github.com/astoneham1/animal-api-client" class="code-btn" target="_blank" title="View Source Code">
-            <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://github.com/astoneham1/animal-api-client/releases/latest" class="card-link" target="_blank">
-            <div class="card-bg" style="background-image: url('https://i.gyazo.com/ea6faada7dc9e10bd68e8db2a11f0e8c.png');"></div>
-            <div class="overlay"></div>
-            <div class="content">
-                <span class="category">Java + Swing + API</span>
-                <h2>Animal Photos</h2>
-            </div>
-        </a>
-    </div>
-
-    <div class="card">
-        <a href="https://github.com/astoneham1/countries-api-client" class="code-btn" target="_blank" title="View Source Code">
-            <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://github.com/astoneham1/countries-api-client/releases/latest" class="card-link" target="_blank">
-            <div class="card-bg" style="background-image: url('https://i.gyazo.com/9177029ce3a2866bd31a5b1cdc2bc8cf.png');"></div>
-            <div class="overlay"></div>
-            <div class="content">
-                <span class="category">Java + Swing + API</span>
-                <h2>Country Stats</h2>
-            </div>
-        </a>
-    </div>
-
-    <div class="card">
-        <a href="https://github.com/astoneham1/joke-api-client" class="code-btn" target="_blank" title="View Source Code">
-            <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://github.com/astoneham1/joke-api-client" class="card-link" target="_blank">
-            <div class="card-bg" style="background-image: url('https://i.gyazo.com/e65f01164f43350ad2c48939162d07f1.png');"></div>
-            <div class="overlay"></div>
-            <div class="content">
-                <span class="category">Java + Swing + API</span>
-                <h2>Joke Generator</h2>
-            </div>
-        </a>
-    </div>
-
-    <div class="card">
-        <a href="https://github.com/astoneham1/nonograms" class="code-btn" target="_blank" title="View Source Code">
-            <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://github.com/astoneham1/nonograms" class="card-link" target="_blank">
-            <div class="card-bg" style="background-image: url('https://i.gyazo.com/d54015fbb310d2de1d2b37168af69757.png');"></div>
-            <div class="overlay"></div>
-            <div class="content">
-                <span class="category">Java + Swing + Games</span>
-                <h2>Nonograms</h2>
-            </div>
-        </a>
-    </div>
-
-    <div class="card">
-        <a href="https://github.com/astoneham1/brickbreak" class="code-btn" target="_blank" title="View Source Code">
-            <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://github.com/astoneham1/brickbreak" class="card-link" target="_blank">
-            <div class="card-bg" style="background-image: url('https://i.gyazo.com/27f51cf1647706cdacee48f686376626.png');"></div>
-            <div class="overlay"></div>
-            <div class="content">
-                <span class="category">Java + Processing + Games</span>
-                <h2>Brickbreak</h2>
-            </div>
-        </a>
-    </div>
-
-    <div class="card">
-        <a href="https://github.com/astoneham1/jdbc" class="code-btn" target="_blank" title="View Source Code">
-            <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://github.com/astoneham1/jdbc" class="card-link" target="_blank">
-            <div class="card-bg" style="background-image: url('https://i.gyazo.com/5a565f435110a49c836f9deaedc151d8.png');"></div>
-            <div class="overlay"></div>
-            <div class="content">
-                <span class="category">Java + SQLite</span>
-                <h2>JDBC</h2>
-            </div>
-        </a>
-    </div>
-    
-    <h2 class="year-heading">2024</h2>
-
-    <div class="card">
-        <a href="https://github.com/astoneham1/higherlower" class="code-btn" target="_blank" title="View Source Code">
-            <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://github.com/astoneham1/higherlower/releases/latest" class="card-link" target="_blank">
-            <div class="card-bg" style="background-image: url('assets/livefut.png');"></div>
-            <div class="overlay"></div>
-            <div class="content">
-                <span class="category">Livecode + SQLite</span>
-                <h2>EAFC Higher or Lower</h2>
-            </div>
-        </a>
-    </div>
-
-    <h2 class="year-heading">Before 2024</h2>
-
-    <div class="card">
-        <a href="https://github.com/astoneham1/clips" class="code-btn" target="_blank" title="View Source Code">
-            <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://clips.alexstoneham.co.uk/" class="card-link" target="_blank">
-            <div class="card-bg" style="background-image: url('assets/clips.png');"></div>
-            <div class="overlay"></div>
-            <div class="content">
-                <span class="category">Web Development</span>
-                <h2>Siege Clip Hub</h2>
-            </div>
-        </a>
-    </div>
-    
-</main>
+  <script>
+    document.getElementById('theme-toggle').addEventListener('click', function () {
+      var dark = document.documentElement.classList.toggle('dark');
+      try { localStorage.theme = dark ? 'dark' : 'light'; } catch (e) { }
+    });
+  </script>
 </body>
+
 </html>
