@@ -208,7 +208,7 @@ svg { display: block; flex-shrink: 0; }
 
 /* Dim the siblings while one card is hovered, like the portfolio */
 @media (hover: hover) {
-    .grid:hover .card:not(:hover) { opacity: 0.5; }
+    .grid:has(.card:not(.card--static):hover) .card:not(:hover) { opacity: 0.5; }
 }
 
 .thumb {
@@ -324,6 +324,37 @@ svg { display: block; flex-shrink: 0; }
 .code-btn svg { width: 18px; height: 18px; }
 .code-btn:hover { background: #fff; color: #09090b; transform: scale(1.1); }
 .code-btn:active { transform: scale(0.95); }
+
+/* ---- Static variant: no links (e.g. private university group projects) ---- */
+.card--static:hover,
+.card--static:focus-within {
+    background: var(--card-bg);
+    border-color: var(--card-border);
+    box-shadow: none;
+    transform: none;
+}
+.card--static:hover .thumb img { transform: none; }
+.card--static:hover .desc { color: var(--text-muted); }
+.card--static:hover .tags li { border-color: var(--tag-border); }
+
+.title { color: var(--heading); }
+
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    padding: 3px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 9999px;
+    background: rgba(9, 9, 11, 0.55);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: #fff;
+}
 
 /* ---- Footer ---- */
 .footer {
