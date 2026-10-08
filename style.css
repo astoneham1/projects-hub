@@ -244,7 +244,14 @@ svg { display: block; flex-shrink: 0; }
     object-fit: cover;
     transition: transform 0.5s ease-out;
 }
-.thumb img[hidden] { display: none; }
+.thumb.align-top img { object-position: top; }
+
+/* Cards with separate light/dark screenshots show the one matching the theme */
+.thumb .img-dark,
+.dark .thumb .img-light { display: none; }
+.dark .thumb .img-dark { display: block; }
+
+.thumb img[hidden] { display: none !important; }
 .card:hover .thumb img { transform: scale(1.05); }
 
 .body { display: flex; flex-direction: column; gap: 12px; flex: 1; }
