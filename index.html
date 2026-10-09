@@ -17,7 +17,8 @@
   <link rel="apple-touch-icon" href="https://alexstoneham.co.uk/ax_icons/apple-touch-icon.png?v=2">
   <script>
     try {
-      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && matchMedia('(prefers-color-scheme: dark)').matches)) {
+      localStorage.removeItem('theme'); // clear the value saved by earlier versions
+      if (matchMedia('(prefers-color-scheme: dark)').matches) {
         document.documentElement.classList.add('dark');
       }
     } catch (e) { }
@@ -632,8 +633,7 @@
 
   <script>
     document.getElementById('theme-toggle').addEventListener('click', function () {
-      var dark = document.documentElement.classList.toggle('dark');
-      try { localStorage.theme = dark ? 'dark' : 'light'; } catch (e) { }
+      document.documentElement.classList.toggle('dark');
     });
 
     // Project filter (all / favourites) and counts that follow it
