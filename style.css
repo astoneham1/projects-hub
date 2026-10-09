@@ -270,6 +270,17 @@ svg { display: block; flex-shrink: 0; }
 .main-link:focus-visible { outline: none; }
 .card:has(.main-link:focus-visible) { outline: 2px solid var(--ring); outline-offset: 2px; }
 
+/* Favourite marker: sits inline after the title text */
+.fav {
+    display: inline-block;
+    margin-left: 6px;
+    vertical-align: -1px;
+    color: #f59e0b;
+    transition: transform 0.3s;
+}
+.fav svg { display: inline-block; width: 15px; height: 15px; }
+.card:hover .fav { transform: rotate(-12deg) scale(1.15); }
+
 .arrow {
     width: 18px;
     height: 18px;
