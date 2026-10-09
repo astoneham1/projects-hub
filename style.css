@@ -152,6 +152,39 @@ svg { display: block; flex-shrink: 0; }
 .lede { max-width: 34rem; font-size: 1.125rem; line-height: 1.7; color: var(--text-muted); }
 .lede .total { color: var(--heading); font-weight: 600; }
 
+/* ---- Filter (all / favourites) ---- */
+.filter { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+
+.filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border: 2px solid var(--rule);
+    border-radius: 9999px;
+    background: transparent;
+    font: inherit;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s, border-color 0.2s, transform 0.2s;
+}
+.filter-btn svg { width: 15px; height: 15px; color: #f59e0b; transition: color 0.2s; }
+.filter-btn:hover { border-color: var(--heading); color: var(--heading); }
+.filter-btn:active { transform: scale(0.95); }
+.filter-btn[aria-pressed="true"] {
+    border-color: var(--heading);
+    background: var(--heading);
+    color: var(--bg);
+}
+
+/* Filtering is pure CSS: hide non-favourite cards, then any year left empty */
+.page[data-filter="favourites"] .card:not(:has(.fav)),
+.page[data-filter="favourites"] .year:not(:has(.fav)) { display: none; }
+/* Shorter entrance stagger so a filtered list doesn't wait on the original positions */
+.page[data-filter="favourites"] .card { animation-delay: calc(var(--i, 0) * 25ms); }
+
 /* ---- Year sections ---- */
 .year { margin-bottom: 64px; }
 

@@ -68,7 +68,7 @@
     </svg>
   </button>
 
-  <main class="page">
+  <main class="page" data-filter="all">
     <header class="hero">
       <a class="back-link" href="https://alexstoneham.co.uk">
         <svg aria-hidden="true">
@@ -80,6 +80,15 @@
       <p class="lede">Everything I've built, from web apps and games to API clients and Java experiments. <span
           class="total">21 projects</span> and counting.</p>
 
+      <div class="filter" role="group" aria-label="Filter projects">
+        <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">All projects</button>
+        <button class="filter-btn" type="button" data-filter="favourites" aria-pressed="false">
+          <svg aria-hidden="true">
+            <use href="#i-star" />
+          </svg>
+          Favourites
+        </button>
+      </div>
     </header>
 
     <section class="year" aria-labelledby="year-2026">
@@ -707,16 +716,40 @@
       try { localStorage.theme = dark ? 'dark' : 'light'; } catch (e) { }
     });
 
-    // Keep the project counts in sync with the cards on the page
+    // Project filter (all / favourites) and counts that follow it
     (function () {
+      var page = document.querySelector('.page');
+      var buttons = document.querySelectorAll('.filter-btn');
       var label = function (n) { return n + (n === 1 ? ' project' : ' projects'); };
 
-      document.querySelectorAll('.year').forEach(function (year) {
-        var n = year.querySelectorAll('.card').length;
-        year.querySelector('.count').textContent = (n < 10 ? '0' : '') + label(n);
+      function updateCounts() {
+        var sel = page.dataset.filter === 'favourites' ? '.card:has(.fav)' : '.card';
+
+        document.querySelectorAll('.year').forEach(function (year) {
+          var n = year.querySelectorAll(sel).length;
+          year.querySelector('.count').textContent = (n < 10 ? '0' : '') + label(n);
+        });
+
+        // The intro line always shows the overall total
+        document.querySelector('.total').textContent = label(document.querySelectorAll('.card').length);
+      }
+
+      function setFilter(filter, updateHash) {
+        page.dataset.filter = filter;
+        buttons.forEach(function (b) {
+          b.setAttribute('aria-pressed', String(b.dataset.filter === filter));
+        });
+        updateCounts();
+        if (updateHash) {
+          history.replaceState(null, '', filter === 'favourites' ? '#favourites' : location.pathname + location.search);
+        }
+      }
+
+      buttons.forEach(function (b) {
+        b.addEventListener('click', function () { setFilter(b.dataset.filter, true); });
       });
 
-      document.querySelector('.total').textContent = label(document.querySelectorAll('.card').length);
+      setFilter(location.hash === '#favourites' ? 'favourites' : 'all', false);
     })();
   </script>
 </body>
