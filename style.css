@@ -411,8 +411,24 @@ svg { display: block; flex-shrink: 0; }
     font-size: 0.875rem;
     color: var(--text-muted);
 }
-.footer a { transition: color 0.2s; }
-.footer a:hover { color: var(--heading); }
+.footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border: 1px solid var(--card-border);
+    border-radius: 999px;
+    background: var(--card-bg);
+    transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.2s;
+}
+.footer-link svg { width: 16px; height: 16px; flex: none; }
+.footer-link:hover {
+    color: var(--heading);
+    border-color: var(--card-border-hover);
+    background: var(--card-bg-hover);
+    transform: translateY(-2px);
+}
+.footer-link:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
 
 /* ---- Animation ---- */
 @keyframes fadeBlurIn {
